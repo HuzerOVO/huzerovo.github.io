@@ -1,0 +1,93 @@
+---
+title: 树莓派热点
+date: 2021-03-11 10:33:39 
+toc: true
+mathjax: false
+categories:
+    - [笔记]
+    - [Raspberrypi]
+tags:
+    - Access Point
+---
+
+> *参考自[Setting up a Raspberry Pi as a routed wireless access point](https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md)*
+
+需要的软件列表：
+- `hostapd`：用于开启热点
+- `dnsmasq`：用于开启DHCP服务与DNS服务
+- `iptables`：设置数据包转发规则
+- `netfilter-persistent`：将 `iptables` 设置的规则持久化
+- `iptables-persistent`：`netfilter-persistent` 插件
+
+## 安装软件
+运行命令
+```shell
+# apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
+```
+等待安装完成
+
+## 配置hostapd
+编辑配置文件 `/etc/hostapd/hostapd.conf`，添加配置
+```
+interface=wlan0
+ssid=YOUR_WIFI_NAME
+hw_mode=g
+channel=7
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=YOUR_WIFI_PASSWORD
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+```
+## 配置dhcpcd
+编辑配置文件 `/etc/dhcpcd.conf`，添加配置
+```
+interface=wlan0
+static ip_address=192.168.10.1/24
+nohook wap_supplicant
+```
+
+## 配置dnsmasq
+编辑配置文件 `/etc/dnsmasp.conf`
+```
+address=/raspberry.me/192.168.10.1
+interface=wlan0
+no-dhcp-interface=eth0
+domain-wlan
+dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
+```
+
+## 设置数据包转发
+1. 允许包转发
+   编辑配置文件 `/etc/sysctl.conf`
+   将 `net.ipv4.ip_forward=1` 取消注释
+
+2. 设置转发规则
+   运行命令
+   ```shell
+   # iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+   ```
+
+3. 保存规则
+   运行命令
+   ```shell
+   # netfilter-persistent save
+   ```
+
+## 设置systemd启动服务
+启用 `hostapd.service`，`dnsmasq.service`，`netfilter-persistent.service`
+禁用 `wpa_supplicant.service`
+```shell
+# systemctl unmask hostapd.service
+# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
+# systemctl disable wpa_supplicant
+```
+
+## 重启
+设置完成后重启
+```shell
+# reboot
+```
