@@ -14,6 +14,9 @@ cache:
   directories:
     - node_modulws
 
+git:
+  submodules: false
+
 before_install:
   - export TZ='Asia/Shanghai'
   - test -e ".gitmodules" && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
