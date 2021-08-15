@@ -19,14 +19,14 @@ tags:
 - `netfilter-persistent`：将 `iptables` 设置的规则持久化
 - `iptables-persistent`：`netfilter-persistent` 插件
 
-## 安装软件
+### 安装软件
 运行命令
 ```shell
 # apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
 ```
 等待安装完成
 
-## 配置hostapd
+### 配置hostapd
 编辑配置文件 `/etc/hostapd/hostapd.conf`，添加配置
 ```
 interface=wlan0
@@ -42,7 +42,7 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
-## 配置dhcpcd
+### 配置dhcpcd
 编辑配置文件 `/etc/dhcpcd.conf`，添加配置
 ```
 interface=wlan0
@@ -50,7 +50,7 @@ static ip_address=192.168.10.1/24
 nohook wap_supplicant
 ```
 
-## 配置dnsmasq
+### 配置dnsmasq
 编辑配置文件 `/etc/dnsmasp.conf`
 ```
 address=/raspberry.me/192.168.10.1
@@ -60,7 +60,7 @@ domain-wlan
 dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 ```
 
-## 设置数据包转发
+### 设置数据包转发
 1. 允许包转发
    编辑配置文件 `/etc/sysctl.conf`
    将 `net.ipv4.ip_forward=1` 取消注释
@@ -77,7 +77,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
    # netfilter-persistent save
    ```
 
-## 设置systemd启动服务
+### 设置systemd启动服务
 启用 `hostapd.service`，`dnsmasq.service`，`netfilter-persistent.service`
 禁用 `wpa_supplicant.service`
 ```shell
@@ -86,7 +86,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 # systemctl disable wpa_supplicant
 ```
 
-## 重启
+### 重启
 设置完成后重启
 ```shell
 # reboot

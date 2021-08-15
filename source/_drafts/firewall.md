@@ -74,18 +74,3 @@ Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包
 [^6]: 参考: [维基百科 Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewalld)
 [^7]: 参考: [维基百科 Firewalld](https://en.wikipedia.org/wiki/Firewalld)
 
-### 使用 iptables
-`man iptables`
-[iptables教程](https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html)
-
-### 使用 UFW
-`man ufw`
-
-### 使用 nftables
-`man nftables`
-
-### 使用 firewalld
-`man firewalld`
-
-~~绝对不是因为我不会才没放教程~~
-
