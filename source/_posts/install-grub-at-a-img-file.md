@@ -1,5 +1,5 @@
 ---
-title: install grub at a img file
+title: 在磁盘映像文件上安装 Grub 2
 toc: true
 mathjax: false
 date: 2021-08-15 14:32:08
@@ -9,7 +9,7 @@ tags:
    - Grub
 ---
 
-# 在磁盘映像文件上安装 Grub 2
+# 
 
 > 本文操作环境为 Arch Linux
 
@@ -18,6 +18,7 @@ tags:
 1. 文中的 Grub 均指 Grub 2，而非 Grub Legacy
 2. 文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki 
 3. 分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M
+4. 请在了解执行的命令的作用之后再执行操作
 
 ### 使用 dd 创建一个映像文件
 
@@ -171,7 +172,7 @@ $ sudo losetup --show -P -f ./os.img
    - `-f` 查找第一个未使用的设备
 
 显示的设备名不一定是 `/dev/loop0`
-在后问出现的 `/dev/loop0` 更改为你实际操作时显示的名称
+在后文出现的 `/dev/loop0` 更改为你实际操作时显示的名称
 
 ### 格式化并挂载分区
 
@@ -197,7 +198,8 @@ $ sudo mount /dev/loop0p2 /mnt
 
 ### 安装 Grub
 
-> 下面的操作具有一定的风险，请执行命令前一定要确认
+> 下面的操作在执行命令前一定要确认
+> 误操作可能会影响本机的 `/boot` 分区
 
 此处示例将安装以 **BIOS 方式启动**的**i386 平台**的 Grub
 使用上一个步骤的挂载点 `/mnt` 作为安装目录

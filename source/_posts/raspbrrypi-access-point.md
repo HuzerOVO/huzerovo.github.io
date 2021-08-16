@@ -10,7 +10,8 @@ tags:
     - Access Point
 ---
 
-> *参考自[Setting up a Raspberry Pi as a routed wireless access point](https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md)*
+> 简单介绍如何在树莓派开启热点
+> *参考自[Setting up a routed wireless access point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point)*
 
 需要的软件列表：
 - `hostapd`：用于开启热点
@@ -29,13 +30,21 @@ tags:
 ### 配置hostapd
 编辑配置文件 `/etc/hostapd/hostapd.conf`，添加配置
 ```
+# 使用的网卡
 interface=wlan0
+# WiFi 名字
 ssid=YOUR_WIFI_NAME
+# WiFi 频率模式
 hw_mode=g
+# 信道
 channel=7
+# 是否 mac 过滤
 macaddr_acl=0
+# 认证算法
 auth_algs=1
+# 是否广播 SSID
 ignore_broadcast_ssid=0
+# 加密相关
 wpa=2
 wpa_passphrase=YOUR_WIFI_PASSWORD
 wpa_key_mgmt=WPA-PSK
@@ -45,18 +54,24 @@ rsn_pairwise=CCMP
 ### 配置dhcpcd
 编辑配置文件 `/etc/dhcpcd.conf`，添加配置
 ```
+# 网卡
 interface=wlan0
+# 网卡地址
 static ip_address=192.168.10.1/24
-nohook wap_supplicant
+# 不要执行这个脚本 
+nohook wpa_supplicant
 ```
 
 ### 配置dnsmasq
 编辑配置文件 `/etc/dnsmasp.conf`
 ```
-address=/raspberry.me/192.168.10.1
+# 为这个网卡开启服务
 interface=wlan0
+# 不要在这个网卡开启服务
 no-dhcp-interface=eth0
-domain-wlan
+# 本机域
+domain=wlan
+# IP 地址分配范围
 dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 ```
 
@@ -91,3 +106,6 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 ```shell
 # reboot
 ```
+
+不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了
+

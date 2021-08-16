@@ -1,14 +1,16 @@
 ---
 title: Linux 防火墙
-date: 2021-02-18 23:04:07
 toc: true
 mathjax: false
 categories:
-   - [笔记]
-   - [Linux]
+  - - 笔记
+  - - Linux
 tags:
-   - Firewall
+  - Firewall
+date: 2021-02-18 23:04:07
 ---
+
+> 本文仅做简单的介绍，不涉及防火墙的实际应用及操作
 
 ## Netfilter Porject
 
@@ -62,15 +64,15 @@ Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包
 ## 管理 firewall
 
 下面列出的是运用最广泛的防火墙管理软件，以及他们之间的联系
-- `netfilter` 是一个 Linux 内核的软件框架，用于管理网络数据包[^3]，运行在内核空间
-- `iptables` 是运行在用户空间的软件，通过控制 netfilter 模块来管理网络数据包的处理和转发[^4]
-- `nftables` 是 iptables 的后继者[^5]
-- `uncomplicated ftrewall(UFW)` 的使用更加简单方便，依赖于 iptables 来管理网络包[^6]
-- `firewalld` 作为 nftables 的前端，并通过其来管理网络包，也可以一使用 iptables[^7]
+- `netfilter` 是一个 Linux 内核的软件框架，用于管理网络数据包[^netfilter]，运行在内核空间
+- `iptables` 是运行在用户空间的软件，通过控制 netfilter 模块来管理网络数据包的处理和转发[^iptables]
+- `nftables` 是 iptables 的后继者[^nftables]
+- `uncomplicated ftrewall(UFW)` 的使用更加简单方便，依赖于 iptables 来管理网络包[^UFW]
+- `firewalld` 作为 nftables 的前端，并通过其来管理网络包，也可以一使用 iptables[^firewalld]
 
-[^3]: 参考: [维基百科 Netfilter](https://zh.wikipedia.org/wiki/Netfilter)
-[^4]: 参考: [维基百科 Iptables](https://zh.wikipedia.org/wiki/Iptables)
-[^5]: 在 Netfilter 项目官网主页指出: *nftables is the successor of iptables*
-[^6]: 参考: [维基百科 Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewalld)
-[^7]: 参考: [维基百科 Firewalld](https://en.wikipedia.org/wiki/Firewalld)
+[^netfilter]: 参考: [维基百科 Netfilter](https://zh.wikipedia.org/wiki/Netfilter)
+[^iptables]: 参考: [维基百科 Iptables](https://zh.wikipedia.org/wiki/Iptables)
+[^nftables]: 在 Netfilter 项目官网主页指出: *nftables is the successor of iptables*
+[^UFW]: 参考: [维基百科 Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewalld)
+[^firewalld]: 参考: [维基百科 Firewalld](https://en.wikipedia.org/wiki/Firewalld)
 

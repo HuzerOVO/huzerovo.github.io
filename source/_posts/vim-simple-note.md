@@ -1,5 +1,5 @@
 ---
-title: Vim 使用向导简单笔记
+title: Vim 简单笔记
 toc: true
 mathjax: false
 categories:
