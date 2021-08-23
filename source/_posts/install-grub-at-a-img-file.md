@@ -9,7 +9,6 @@ tags:
    - Grub
 ---
 
-# 
 
 > 本文操作环境为 Arch Linux
 
