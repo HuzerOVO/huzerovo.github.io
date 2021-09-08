@@ -34,6 +34,8 @@ tags:
 interface=wlan0
 # WiFi 名字
 ssid=YOUR_WIFI_NAME
+# 驱动
+driver=nl80211
 # WiFi 频率模式
 hw_mode=g
 # 信道
@@ -51,6 +53,21 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
+**警告**:
+channel 不可随意选择，不同的国家与地区允许使用的信道不同
+信道的选择请参考 [维基百科](https://en.wikipedia.org/wiki/List_of_WLAN_channels)
+
+注：上面的配置启用的为 2.4GHz 的WiFi
+如需使用 5GHz 的 WiFi，修改以下配置：
+```
+#hw_mode=g
+hw_mode=a
+#channel=7
+# 这个信道在中国合法
+channel=149
+```
+
+
 ### 配置dhcpcd
 编辑配置文件 `/etc/dhcpcd.conf`，添加配置
 ```
