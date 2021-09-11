@@ -1,13 +1,12 @@
 ---
 title: Vim 简单笔记
+date: 2021-02-19 15:43:14
 toc: true
 mathjax: false
 categories:
-  - [笔记]
-  - [Linux]
+  - [杂货铺]
 tags:
   - Vim
-date: 2021-02-19 15:43:14
 ---
 
 

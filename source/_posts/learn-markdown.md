@@ -4,7 +4,6 @@ date: 2020-11-08 11:25:06
 toc: false
 mathjax: false
 categories:
-   - [笔记]
    - [杂货铺]
 tags:
    - Markdown

@@ -4,8 +4,9 @@ toc: true
 mathjax: false
 date: 2021-08-15 14:32:08
 categories:
-   - [Linux]
+   - [杂货铺]
 tags:
+   - Linux
    - Grub
 ---
 

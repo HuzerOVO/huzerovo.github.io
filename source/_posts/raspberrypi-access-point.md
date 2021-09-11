@@ -4,10 +4,11 @@ date: 2021-03-11 10:33:39
 toc: true
 mathjax: false
 categories:
-    - [笔记]
-    - [Raspberrypi]
+   - [树莓派]
 tags:
-    - Access Point
+   - hostapd
+   - dnsmasq
+   - Access Point
 ---
 
 > 简单介绍如何在树莓派开启热点

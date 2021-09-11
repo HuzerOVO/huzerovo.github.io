@@ -1,13 +1,13 @@
 ---
 title: Linux 防火墙
+date: 2021-02-18 23:04:07
 toc: true
 mathjax: false
 categories:
-  - - 笔记
-  - - Linux
+  - [杂货铺]
 tags:
-  - Firewall
-date: 2021-02-18 23:04:07
+  - Linux
+  - 防火墙
 ---
 
 > 本文仅做简单的介绍，不涉及防火墙的实际应用及操作

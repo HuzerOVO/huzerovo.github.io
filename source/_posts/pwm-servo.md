@@ -3,8 +3,7 @@ title: PWM 舵机控制
 date: 2021-03-18 20:54:22
 toc: true
 categories:
-   - [笔记]
-   - [Raspberrypi]
+   - [树莓派]
 tags:
    - Python
    - Servo
