@@ -10,7 +10,7 @@ tags:
 ---
 
 
-> 本文总结自 vim 使用向导程序 `vimtutor`
+> 总结自 vim 使用向导程序 `vimtutor`
 
 ### 前言
 

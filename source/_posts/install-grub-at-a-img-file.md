@@ -11,7 +11,7 @@ tags:
 ---
 
 
-> 本文操作环境为 Arch Linux
+> 操作环境为 Arch Linux
 
 ### 前言
 
