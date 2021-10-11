@@ -45,7 +45,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
@@ -56,35 +56,19 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+
 markdown:
   preset: 'default'
   render:
     html: true
-    xhtmlOut: false
+    xhtmlOut: true
+    breaks: false
     langPrefix: 'language-'
-    breaks: true
     linkify: true
     typographer: true
     quotes: '“”‘’'
   enable_rules:
   disable_rules:
-  plugins:
-    - markdown-it-abbr
-    - markdown-it-footnote
-    - markdown-it-ins
-    - markdown-it-sub
-    - markdown-it-sup
-    - markdown-it-anchor
-    - markdown-it-deflist
-    - markdown-it-mark
-    - markdown-it-container
-#    - markdown-it-emoji
-    - markdown-it-attrs
-    - name: markdown-it-task-lists
-      options:
-        enabled: true
-        label: true
-        labelAfter: true
   anchors:
     level: 2
     collisionSuffix: ''
@@ -94,6 +78,23 @@ markdown:
     permalinkSymbol: '¶'
     case: 0
     separator: '-'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-anchor
+    - markdown-it-deflist
+   #- markdown-it-mark
+    - markdown-it-container
+    - markdown-it-emoji
+    - markdown-it-attrs
+    - name: markdown-it-task-lists
+      options:
+        enabled: false
+        label: true
+        labelAfter: true
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -141,7 +142,7 @@ ignore:
 # Extens6ions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: diaspora
+theme: huzerovo
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
