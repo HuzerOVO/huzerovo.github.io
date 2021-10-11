@@ -2,6 +2,7 @@
 title: PWM 舵机控制
 date: 2021-03-18 20:54:22
 toc: true
+mathjax: true
 categories:
    - [树莓派]
 tags:

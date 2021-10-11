@@ -1,7 +1,7 @@
 ---
 title: 梯度下降算法
 toc: true
-mathjax: false
+mathjax: true
 categories:
   - - 机器学习
 tags:

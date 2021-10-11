@@ -1,7 +1,6 @@
 ---
 title: about
 date: 2021-01-28 15:03:35
-type: "about"
 ---
 
 ### HuLingOAO

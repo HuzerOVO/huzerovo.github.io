@@ -1,6 +1,3 @@
-[submodule "themes/diaspora"]
-    path = themes/diaspora
-    url = https://github.com/HuLingOVO/hexo-theme-diaspora
 [submodule "themes/huzerovo"]
 	path = themes/huzerovo
 	url = https://github.com/HuLingOVO/hexo-theme-huzerovo
