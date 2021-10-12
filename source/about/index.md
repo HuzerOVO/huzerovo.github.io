@@ -1,13 +1,14 @@
 ---
 title: about
 date: 2021-01-28 15:03:35
+highlight: true
 ---
 
 ### HuLingOAO
 笔记 flags:
 
 Raspberry 人脸识别
-- [ ] 复习 Python
+- [x] 复习 Python
 - [x] PWM 相关
 - [x] 舵机控制
 - [ ] opencv 摄像头控制
@@ -16,8 +17,8 @@ Raspberry 人脸识别
 学习 flags:
 
 内核相关
-- [ ] Inter 汇编
-- [ ] AMDv8 汇编
+- [x] Inter 汇编
+- [x] AMDv8 汇编
 - [ ] 内核相关
 
 Android
