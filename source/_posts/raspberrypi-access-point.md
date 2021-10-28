@@ -62,9 +62,10 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 #hw_mode=g
 hw_mode=a
 #channel=7
-# 在内核启用 CONFIG_ACS 编译选项后
+# 在内核启 CONFIG_ACS 编译选项后
 # 该选项设置为 0 时会自动选择信道
-channel=0
+# 树莓派似乎不支持......
+channel=149
 ```
 
 
