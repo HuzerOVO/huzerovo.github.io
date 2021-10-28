@@ -2,11 +2,9 @@
 title: Linear Regression - 线性回归
 toc: true
 mathjax: true
-date: 2021-09-11 15:23:18
 categories:
    - [机器学习]
 tags:
-   - 机器学习
    - 监督学习
    - 线性回归
    - 咕咕咕ing

@@ -3,12 +3,9 @@ title: 梯度下降算法
 toc: true
 mathjax: true
 categories:
-  - - 机器学习
+  - [机器学习]
 tags:
-  - 机器学习
   - 算法
-  - 咕咕咕ing
-date: 2021-09-16 22:25:42
 ---
 
 

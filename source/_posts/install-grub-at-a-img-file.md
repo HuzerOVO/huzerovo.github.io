@@ -2,7 +2,6 @@
 title: 在磁盘映像文件上安装 Grub 2
 toc: true
 mathjax: false
-date: 2021-08-15 14:32:08
 categories:
    - [杂货铺]
 tags:
@@ -38,7 +37,7 @@ $ dd if=/dev/zero of=os.img bs=1M count=20
 $ gdisk os.img
 ```
 
-进入 gdisk 交互界面
+进入 gdisk 交互界面  
 如下所示
 
 ```
@@ -55,7 +54,7 @@ Creating new GPT entries in memory.
 Command (? for help):
 ```
 
-> 根据 [Arch Linux Wiki](https://wiki.archlinux.org/title/GRUB#BIOS_systems)
+> 根据 [Arch Linux Wiki](https://wiki.archlinux.org/title/GRUB#BIOS_systems)  
 > 需要腾出 1M 空间给 Grub 使用
 
 **创建分区简要步骤：**
@@ -137,7 +136,7 @@ $ fdisk ./os.img
 
 输入 `g` 新建一个 GPT 分区表
 
-创建分区过程与 **使用gdisk** 一节类似
+创建分区过程与 **使用gdisk** 一节类似  
 但创建分区过程无法选择分区类型，需要在创建分区后进行更改
 
 在创建分区后
@@ -158,7 +157,6 @@ $ fdisk ./os.img
 
 最后输入 `w` 确认写入文件
 
-
 ### 将 os.img 挂载为 loop 设备
 
 ```shell
@@ -167,27 +165,28 @@ $ sudo losetup --show -P -f ./os.img
 ```
 
 命令解释：
-   - `--show` 在挂载成功后，显示挂载的设备名
-   - `-P` 创建带分区的 loop 设备
-   - `-f` 查找第一个未使用的设备
+- `--show` 在挂载成功后，显示挂载的设备名
+- `-P` 创建带分区的 loop 设备
+- `-f` 查找第一个未使用的设备
 
-显示的设备名不一定是 `/dev/loop0`
+显示的设备名不一定是 `/dev/loop0`  
 在后文出现的 `/dev/loop0` 更改为你实际操作时显示的名称
 
 ### 格式化并挂载分区
 
-> 在文中实例中，需要格式化的是第二个分区，对应的 loop 设备为 `/dev/loop0p2`
+> 在文中实例中，需要格式化的是第二个分区  
+> 对应的 loop 设备为 `/dev/loop0p2`  
 > 如上一个步骤中的显示的 loop 设备不同，请自行更改
 
 ```shell
 $ sudo mkfs.vfat -L "BOOT" /dev/loop0p2
 ```
 
-不出意外的话，格式化很快就能完成
+不出意外的话，格式化很快就能完成  
 随后挂载分区
 
-请选择一个没有正在使用的文件夹
-在本文中选择 `/mnt` 作为挂载点
+请选择一个没有正在使用的文件夹  
+在本文中选择 `/mnt` 作为挂载点  
 这个文件夹在之后会使用到
 
 ```shell
@@ -201,7 +200,7 @@ $ sudo mount /dev/loop0p2 /mnt
 > 下面的操作在执行命令前一定要确认
 > 误操作可能会影响本机的 `/boot` 分区
 
-此处示例将安装以 **BIOS 方式启动**的**i386 平台**的 Grub
+此处示例将安装以 **BIOS 方式启动**的**i386 平台**的 Grub  
 使用上一个步骤的挂载点 `/mnt` 作为安装目录
 
 ```shell
@@ -212,7 +211,7 @@ $ sudo grub-install --target=i386-pc --boot-directory=/mnt
    - `target=i386-pc` 指出安装架构为 i386
    - `boot-directory=/mnt` 指出安装到 `/mnt` 而不是默认的 `/boot`
 
-安装需要 13M 左右的空间
+安装需要 13M 左右的空间  
 完成后会提示成功
 
 ### 配置
@@ -243,7 +242,7 @@ $ sudo umount /mnt
 $ sudo losetup -d /dev/loop0
 ```
 
-上面的命令将从挂载点卸载 loop 设备
+上面的命令将从挂载点卸载 loop 设备  
 并释放 loop 设备与文件的关联
 
 ### 参考资料

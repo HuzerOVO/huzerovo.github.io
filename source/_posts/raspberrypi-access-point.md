@@ -1,6 +1,5 @@
 ---
 title: 树莓派热点
-date: 2021-03-11 10:33:39 
 toc: true
 mathjax: false
 categories:
@@ -11,7 +10,7 @@ tags:
    - Access Point
 ---
 
-> 简单介绍如何在树莓派开启热点
+> 简单介绍如何在树莓派开启热点  
 > *参考自[Setting up a routed wireless access point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point)*
 
 需要的软件列表：
@@ -55,8 +54,7 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 **警告**:
-channel 不可随意选择，不同的国家与地区允许使用的信道不同
-信道的选择请参考 [维基百科](https://en.wikipedia.org/wiki/List_of_WLAN_channels)
+channel 不可随意选择，不同的国家与地区允许使用的信道不同  
 
 注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：
@@ -64,8 +62,9 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 #hw_mode=g
 hw_mode=a
 #channel=7
-# 这个信道在中国合法
-channel=149
+# 在内核启用 CONFIG_ACS 编译选项后
+# 该选项设置为 0 时会自动选择信道
+channel=0
 ```
 
 
@@ -94,8 +93,8 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 ```
 
 ### 设置数据包转发
-1. 允许包转发
-   编辑配置文件 `/etc/sysctl.conf`
+1. 允许包转发  
+   编辑配置文件 `/etc/sysctl.conf`  
    将 `net.ipv4.ip_forward=1` 取消注释
 
 2. 设置转发规则
@@ -111,7 +110,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
    ```
 
 ### 设置systemd启动服务
-启用 `hostapd.service`，`dnsmasq.service`，`netfilter-persistent.service`
+启用 `hostapd.service`，`dnsmasq.service`，`netfilter-persistent.service`  
 禁用 `wpa_supplicant.service`
 ```shell
 # systemctl unmask hostapd.service
@@ -127,3 +126,6 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 
 不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了
 
+## 参考链接
+[hostapd.conf 设置说明](https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf)  
+[维基百科：WLAN channel](https://en.wikipedia.org/wiki/List_of_WLAN_channels)
