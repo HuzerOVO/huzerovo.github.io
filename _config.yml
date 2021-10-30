@@ -75,7 +75,7 @@ markdown:
     permalink: true
     permalinkClass: 'header-anchor'
     permalinkSide: 'left'
-    permalinkSymbol: '¶'
+    permalinkSymbol: '¶ '
     case: 0
     separator: '-'
   plugins:
