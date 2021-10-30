@@ -1,5 +1,7 @@
 ---
-title: Linear Regression - 线性回归
+title: 线性回归
+date: 2021-09-11
+updated: 2021-10-29
 toc: true
 mathjax: true
 categories:

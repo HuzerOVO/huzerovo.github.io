@@ -1,5 +1,7 @@
 ---
 title: Intel x86 汇编语言
+date: 2021-03-26
+updated: 2021-10-29
 toc: true
 mathjax: false
 categories:

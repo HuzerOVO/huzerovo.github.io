@@ -1,5 +1,7 @@
 ---
 title: 在磁盘映像文件上安装 Grub 2
+date: 2021-08-15
+updated: 2021-10-29
 toc: true
 mathjax: false
 categories:

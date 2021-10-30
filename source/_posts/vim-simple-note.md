@@ -1,5 +1,7 @@
 ---
 title: Vim 简单笔记
+date: 2021-02-19
+updated: 2021-10-29
 toc: true
 mathjax: false
 categories:

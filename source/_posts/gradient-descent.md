@@ -1,5 +1,7 @@
 ---
 title: 梯度下降算法
+date: 2021-09-16
+updated: 2021-10-29
 toc: true
 mathjax: true
 categories:
