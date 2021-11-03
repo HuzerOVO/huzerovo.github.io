@@ -1,7 +1,7 @@
 ---
 title: 线性回归
 date: 2021-09-11
-updated: 2021-10-29
+updated: 2021-11-04
 toc: true
 mathjax: true
 categories:
@@ -154,7 +154,7 @@ $$
 
 ### 为什么使用最小二乘法
 
-咕咕咕
+参考文章 {% post_link why-use-least-squares %}
 
 ## 解决问题
 

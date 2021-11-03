@@ -3,7 +3,7 @@ title: 局部加权回归
 toc: true
 mathjax: true
 date: 2021-10-30
-updated: 2021-10-30
+updated: 2021-11-04
 categories:
    - [机器学习]
 tags:
@@ -33,7 +33,7 @@ tags:
 $
 \sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
 $
-最小化  
+
 其中， $w^{i}$ 为权值[^what-is-it]且有[^why-choose-it]
 $$
 w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
