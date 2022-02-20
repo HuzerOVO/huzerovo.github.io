@@ -16,6 +16,7 @@ tags:
 > 解释为什么最小二乘法能减小误差
 
 ## 了解一下误差
+
 假设预测结果与实际结果存在误差，即
 $$
 \begin{equation}
@@ -36,19 +37,22 @@ $$
 $$
 \begin{equation}
 \label{eq2}
-P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma} \exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
+P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma}
+                       \exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{equation}
 $$
 
 [^the-reason]: 根据 **中心极限定理** 可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设
 
 ## 最大化预测期望等价于最小化误差
+
 由 $\eqref{eq1}$ 和 $\eqref{eq2}$ 得[^what-is-it]：
 $$
 \begin{equation}
 \label{eq3}
 P(y^{i} \mid x^{i} ; \theta)
-= \frac{1}{\sqrt{2 \pi} \sigma} \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
+= \frac{1}{\sqrt{2 \pi} \sigma}
+  \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{equation}
 $$
 
@@ -72,7 +76,8 @@ $$
 L(\theta)
 & = P(Y \mid X ; \theta) \\\\
 & = \prod_{i=1}^{m} P(y^{i} \mid x^{i} ; \theta) \\\\
-& = \prod_{i=1}^{m} \frac{1}{\sqrt{2 \pi} \sigma} \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
+& = \prod_{i=1}^{m} \frac{1}{\sqrt{2 \pi} \sigma}
+    \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{split}
 \end{equation}
 $$
@@ -83,8 +88,10 @@ $$
 \begin{split}
 l(\theta)
 & = \log{L(\theta)} \\\\
-& = \sum_{i=1}^{m} \log{ \frac{1}{ \sqrt{2 \pi} \sigma } \exp{( - \frac{( y^{(i)} - \theta^{T} x^{(i)} )^{2}}{ 2 \sigma^{2} } )}} \\\\
-& = m \log{\frac{1}{\sqrt{2 \pi} \sigma}} + \sum_{i=1}^{m} -( \frac{y^{(i)} - \theta^{T} x^{(i)}}{2 \sigma^{2}} )
+& = \sum_{i=1}^{m} \log{ \frac{1}{ \sqrt{2 \pi} \sigma }
+    \exp{( - \frac{( y^{(i)} - \theta^{T} x^{(i)} )^{2}}{ 2 \sigma^{2} } )}} \\\\
+& = m \log{\frac{1}{\sqrt{2 \pi} \sigma}} + \sum_{i=1}^{m} -( \frac{y^{(i)}
+    - \theta^{T} x^{(i)}}{2 \sigma^{2}} )
 \end{split}
 \end{equation}
 $$

@@ -25,10 +25,12 @@ tags:
 这里的定义是为了方便后面的表达
 
 将监督学习中的一些概念 “重命名”
+
 - 特征，定义为输入空间（特征空间）
 - 标签，定义为输出空间
 
 对 “特征” 与 “标签” 的理解  
+
 1. 从算法定义上
    - 特征可理解为输入
    - 标签可理解为输出
@@ -73,11 +75,13 @@ $y$ 为特征对应的 “标签”
 
 $$
 \begin{equation}
-   h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} + \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}
+   h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} +
+   \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}
 \end{equation}
 $$
 
-其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$ 表示 **参数 (parameters)** ，或者说是 **权值 (weights)**
+其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$
+表示 **参数 (parameters)** ，或者说是 **权值 (weights)**
 这是我们需要求得的值
 
 ### 引入向量进行表达
@@ -85,7 +89,7 @@ $$
 若用向量表示 $\theta$ ：
 
 $$
-\vec{\theta} = 
+\vec{\theta} =
 \begin{pmatrix}
    \theta_{0}\\\\
    \theta_{1}\\\\
@@ -120,7 +124,9 @@ $$
 即建立一个合理的模型
 
 ## 进一步分析问题
+
 ### 引入数据集与训练集的概念
+
 上面的函数仅表示单个数据中的 “特征与标签” 关系  
 若存在多个数据，即 **数据集 (dataset)** ，
 且所有的数据都存在 “特征-标签” 的关系，
@@ -133,8 +139,8 @@ $$
 $x^{(j)}$ 表示训练集中， **第 $j$ 项数据** 的特征向量  
 同理可得 $\theta_{i}^{(j)}$ 与 $\theta^{(j)}$
 
-
 ### 引入最小二乘法转化问题
+
 回顾我们的问题：  
 我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系  
 换句话说，给出 “特征” ，若 “特征” 存在于训练集中，那么
@@ -171,7 +177,7 @@ $$
 我们可以这样进行更新：
 $$  
 \begin{equation}
-   \theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} (\theta)
+   \theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} J(\theta)
    \label{eq4}
 \end{equation}
 $$
@@ -185,8 +191,10 @@ $$
 \begin{split}
    \frac{\partial}{\partial \theta_{j}} J(\theta)
    &= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\\\
-   &= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\\\
-   &= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\\\
+   &= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot
+      \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\\\
+   &= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}}
+      \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\\\
    &= (h_{\theta}(x) - y) x_{j}
 \end{split}
 \end{equation}
@@ -204,7 +212,8 @@ $$
 
 $$
 \begin{equation}
-   \theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right) x_{j}^{(i)}
+   \theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)})
+                 - y^{(i)}\right) x_{j}^{(i)}
 \end{equation}
 $$
 
@@ -223,6 +232,7 @@ $$
 牛顿法的步骤为：
 
 > 设函数为 $f(x)$  
+>
 > 1. 随机在函数 $f(x)$ 上取一初始点 $P_{0}$
 > 2. 过点 $P_{0}$ 作函数 $f(x)$ 的切线 $L$
 > 3. 找到切线 $L$ 与 $x$ 轴的交点 $Q_{0}$
@@ -240,18 +250,21 @@ $$
 
 > 这里的定义均来自 Andrew NG 课程讲义
 
-**定义矩阵函数的导函数**
+##### 定义矩阵函数的导函数
+
 对于函数 $f$ : $\mathbb{R}^{m \times n} \mapsto \mathbb{R}$ ，
 即 $m \times n$ 的矩阵映射至实数的函数关系  
 定义函数 $f$ 对矩阵 $A$ 的导数为：
 
 $$
 \begin{equation}
-   \nabla_{A}f(A) = 
+   \nabla_{A}f(A) =
 \begin{bmatrix}
-   \frac{\partial{f}}{\partial A_{11}} & \cdots & \frac{\partial{f}}{\partial A_{1n}} \\\\
+   \frac{\partial{f}}{\partial A_{11}} & \cdots &
+       \frac{\partial{f}}{\partial A_{1n}} \\\\
    \vdots & \ddots & \vdots \\\\
-   \frac{\partial{f}}{\partial A_{m1}} & \cdots & \frac{\partial{f}}{\partial A_{mn}} \\\\
+   \frac{\partial{f}}{\partial A_{m1}} & \cdots &
+       \frac{\partial{f}}{\partial A_{mn}} \\\\
 \end{bmatrix}
 \end{equation}
 $$
@@ -268,14 +281,14 @@ $ ，
 函数 $f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22}$ ，
 那么
 $
-   \nabla_{A} f(A) = 
+   \nabla_{A} f(A) =
 \begin{bmatrix}
    \frac{3}{2} & 10A_{12} \\\\
    A_{22} & A_{21}
 \end{bmatrix}
 $
 
-**定义 trace 运算**
+##### 定义 trace 运算
 
 `trace` 运算简写为 `tr`  
 对于 $n \times n$ 的矩阵 $A$ ，定义  
@@ -343,14 +356,14 @@ $$
 \end{equation}
 $$
 
-
 #### 解析式推导
+
 使用矩阵表达 “特征” 与 “标签”  
 定义矩阵 $X$ 和 $Y$  
 
 $$
 \begin{equation}
-   X = 
+   X =
 \begin{bmatrix}
    ( x^{(1)} )^{T} \\\\
    ( x^{(2)} )^{T} \\\\
@@ -358,11 +371,11 @@ $$
    ( x^{(m)} )^{T}
 \end{bmatrix}
    ,
-   Y = 
+   Y =
 \begin{bmatrix}
    y^{(1)} \\\\
    y^{(2)} \\\\
-   \vdots \\\\ 
+   \vdots \\\\
    y^{(m)}
 \end{bmatrix}
 \end{equation}
@@ -399,7 +412,7 @@ $$
 \begin{bmatrix}
    y^{(1)} \\\\
    y^{(2)} \\\\
-   \vdots \\\\ 
+   \vdots \\\\
    y^{(m)}
 \end{bmatrix} =
 \begin{bmatrix}
@@ -417,7 +430,7 @@ $$
 $$
 \begin{equation}
 \begin{split}
-   \frac{1}{2} (X \theta - Y)^{T} (X \theta - Y) 
+   \frac{1}{2} (X \theta - Y)^{T} (X \theta - Y)
    &= \frac{1}{2} \sum_{i = 1}^{m} ( h_{\theta}(x^{(i)}) - y^{(i)} )^{2} \\\\
    &= J(\theta)
 \end{split}
@@ -440,19 +453,29 @@ $$
 \begin{split}
    \nabla_{\theta} J(\theta)
    &= \nabla_{\theta} \frac{1}{2} ( X \theta - Y )^{T} (X \theta - Y) \\\\
-   &= \frac{1}{2} \nabla_{\theta} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\\\
-   &= \frac{1}{2} \nabla_{\theta} \mathrm{tr} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\\\
-   &= \frac{1}{2} \nabla_{\theta} ( \mathrm{tr} \theta^{T} X^{T} X \theta - 2 \mathrm{tr} Y^{T} X \theta ) \\\\
+   &= \frac{1}{2} \nabla_{\theta} ( \theta^{T} X^{T} X \theta -
+      \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\\\
+   &= \frac{1}{2} \nabla_{\theta} \mathrm{tr} ( \theta^{T} X^{T} X \theta -
+      \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\\\
+   &= \frac{1}{2} \nabla_{\theta} ( \mathrm{tr} \theta^{T} X^{T} X \theta -
+      2 \mathrm{tr} Y^{T} X \theta ) \\\\
    &= \frac{1}{2} ( X^{T} X \theta + X^{T} X \theta - 2 X^{T} Y ) \\\\
    &= X^{T}  X \theta - X^{T} Y
 \end{split}
 \end{equation}
 $$
 
-第三步将 $(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y )$ 视作整体，
-可知这是一个实数，可将其看作一个 $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
+第三步将
+$(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta +
+Y^{T} Y )$
+视作整体，
+可知这是一个实数，可将其看作一个
+$1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
 由 `trace` 定义可知 $\mathrm{tr} A = a$  
-第四步使用了 $\mathrm{tr} A = \mathrm{tr} A^{T}$  
+
+第四步使用了 $\mathrm{tr} A = \mathrm{tr} A^{T}$ ，
+且由于 $Y^{T}Y$ 项不存在 $\theta$ ，求导后为 $0$  
+
 第五步中使用了 $\eqref{theorem1}$ 和 $\eqref{inference1}$ ，
 视 $A^{T} = \theta$ ， $B = B^{T} = X^{T} X$ , $C = I$
 

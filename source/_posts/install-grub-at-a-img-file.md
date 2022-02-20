@@ -17,14 +17,14 @@ tags:
 ### 前言
 
 1. 文中的 Grub 均指 Grub 2，而非 Grub Legacy
-2. 文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki 
+2. 文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki
 3. 分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M
 4. 请在了解执行的命令的作用之后再执行操作
 
 ### 使用 dd 创建一个映像文件
 
 ```shell
-$ dd if=/dev/zero of=os.img bs=1M count=20
+dd if=/dev/zero of=os.img bs=1M count=20
 ```
 
 此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件
@@ -36,13 +36,13 @@ $ dd if=/dev/zero of=os.img bs=1M count=20
 #### 使用 gdisk
 
 ```shell
-$ gdisk os.img
+gdisk os.img
 ```
 
 进入 gdisk 交互界面  
 如下所示
 
-```
+```shell
 GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
@@ -60,6 +60,7 @@ Command (? for help):
 > 需要腾出 1M 空间给 Grub 使用
 
 **创建分区简要步骤：**
+
 - 输入 `n` 创建新的分区
 - 回车选择默认的分区号
 - 再次回车选择默认的起始块
@@ -72,7 +73,8 @@ Command (? for help):
 可能会出现一个警告，确认即可
 
 **以下为参考：**
-```
+
+```shell
 GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
@@ -130,8 +132,9 @@ The operation has completed successfully.
 ```
 
 #### 使用 fdisk
+
 ```shell
-$ fdisk ./os.img
+fdisk ./os.img
 ```
 
 进入 fdisk 交互界面
@@ -142,12 +145,14 @@ $ fdisk ./os.img
 但创建分区过程无法选择分区类型，需要在创建分区后进行更改
 
 在创建分区后
+
 - 输入 `t` 更改分区类型
 - 随后会要求选择分区，输入 `1` 选择第一个分区
 - 然后输入 `4` 将分区类型更改为 BIOS Boot
 
-**参考**
-```
+**参考：**
+
+```shell
 命令(输入 m 获取帮助)：t
 分区号 (1,2, 默认  2): 1
 分区类型或别名（输入 L 列出所有类型）：4
@@ -167,6 +172,7 @@ $ sudo losetup --show -P -f ./os.img
 ```
 
 命令解释：
+
 - `--show` 在挂载成功后，显示挂载的设备名
 - `-P` 创建带分区的 loop 设备
 - `-f` 查找第一个未使用的设备
@@ -181,7 +187,7 @@ $ sudo losetup --show -P -f ./os.img
 > 如上一个步骤中的显示的 loop 设备不同，请自行更改
 
 ```shell
-$ sudo mkfs.vfat -L "BOOT" /dev/loop0p2
+sudo mkfs.vfat -L "BOOT" /dev/loop0p2
 ```
 
 不出意外的话，格式化很快就能完成  
@@ -192,7 +198,7 @@ $ sudo mkfs.vfat -L "BOOT" /dev/loop0p2
 这个文件夹在之后会使用到
 
 ```shell
-$ sudo mount /dev/loop0p2 /mnt
+sudo mount /dev/loop0p2 /mnt
 ```
 
 没有消息就是最好的消息
@@ -206,12 +212,13 @@ $ sudo mount /dev/loop0p2 /mnt
 使用上一个步骤的挂载点 `/mnt` 作为安装目录
 
 ```shell
-$ sudo grub-install --target=i386-pc --boot-directory=/mnt
+sudo grub-install --target=i386-pc --boot-directory=/mnt
 ```
 
 命令解释：
-   - `target=i386-pc` 指出安装架构为 i386
-   - `boot-directory=/mnt` 指出安装到 `/mnt` 而不是默认的 `/boot`
+
+- `target=i386-pc` 指出安装架构为 i386
+- `boot-directory=/mnt` 指出安装到 `/mnt` 而不是默认的 `/boot`
 
 安装需要 13M 左右的空间  
 完成后会提示成功
@@ -220,7 +227,7 @@ $ sudo grub-install --target=i386-pc --boot-directory=/mnt
 
 照着手册随便糊的一个，~~能用就行~~
 
-```
+```shell
 # Grub 的配置文件
 
 # 设置根分区
@@ -240,8 +247,8 @@ menuentry EntryName {
 ### 卸载设备
 
 ```shell
-$ sudo umount /mnt
-$ sudo losetup -d /dev/loop0
+sudo umount /mnt
+sudo losetup -d /dev/loop0
 ```
 
 上面的命令将从挂载点卸载 loop 设备  
