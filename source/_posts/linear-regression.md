@@ -9,7 +9,6 @@ categories:
 tags:
    - 监督学习
    - 线性回归
-   - 咕咕咕ing
 ---
 
 > 基于 Andrew NG 机器学习 公开课程 [^andrew-ng]  

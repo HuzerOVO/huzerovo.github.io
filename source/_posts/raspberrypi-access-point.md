@@ -37,7 +37,7 @@ tags:
 
 编辑配置文件 `/etc/hostapd/hostapd.conf`，添加配置
 
-```shell
+```conf
 # 使用的网卡
 interface=wlan0
 # WiFi 名字
@@ -68,7 +68,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：
 
-```shell
+```conf
 #hw_mode=g
 hw_mode=a
 #channel=7
@@ -82,7 +82,7 @@ channel=149
 
 编辑配置文件 `/etc/dhcpcd.conf`，添加配置
 
-```shell
+```conf
 # 网卡
 interface=wlan0
 # 网卡地址
@@ -95,7 +95,7 @@ nohook wpa_supplicant
 
 编辑配置文件 `/etc/dnsmasp.conf`
 
-```shell
+```conf
 # 为这个网卡开启服务
 interface=wlan0
 # 不要在这个网卡开启服务
